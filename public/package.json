@@ -1,0 +1,15 @@
+{
+  "name": "aplikasi-informasi-sepak-bola",
+  "version": "1.0.0",
+  "description": "Informasi Sepak Bola",
+  "main": "sw.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./assets/js/push.js"
+  },
+  "author": "rhmt_ty",
+  "license": "ISC",
+  "dependencies": {
+    "web-push": "^3.4.4"
+  }
+}

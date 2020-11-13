@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Informasi Sepak Bola - PREMIER LEAGUE</title>
+    <link rel="shortcut icon" href="assets/icon/icon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="assets/icon/icon-192.png">
+    <meta name="description" content="Informasi Sepak Bola" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/materialize.min.css" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#00838f" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigasi -->
+    <nav class="cyan darken-4" role="navigation">
+        <div class="nav-wrapper container">
+            <a href="/" class="brand-logo" id="logo-container">PREMIER LEAGUE</a>
+            <a href="./index.html" class="sidenav-trigger" data-target="nav-mobile">
+                <i class="material-icons">arrow_back</i>
+            </a>
+            <ul class="topnav right hide-on-med-and-down"></ul>
+            <ul class="sidenav" id="nav-mobile"></ul>
+        </div>
+    </nav>
+
+    <div class="container" id="detail-content"></div>
+    
+    <div class="fixed-action-btn">
+        <a class="btn-floating waves-effect waves-light cyan" id="btnSave"><i class="material-icons large">save</i></a>
+        <a class="btn-floating waves-effect waves-light red" id="btnDelete"><i class="material-icons large">delete</i></a>
+    </div>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="assets/js/materialize.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/idb.js"></script>
+    <script src="assets/js/db.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search)
+            const idParam = urlParams.get('id')
+            const isFromSaved = urlParams.get('saved')
+            const item = getTeamById()
+            
+            const btnSave =  document.querySelector('#btnSave')
+            const btnDelete =  document.querySelector('#btnDelete')
+
+            if(isFromSaved) {
+                // Sembunyikan tombol fab jika dimuat dari indexed db
+                btnSave.style.display = 'none'
+                btnDelete.style.display = 'block'
+
+                // Ambil konten lalu tampilkan
+                getSavedTeamById()
+            } else {
+                btnDelete.style.display = 'none'
+                item
+            }
+
+            // kode untuk menghandle ketika tombol delete di klik
+            btnDelete.onclick = () => {
+                console.log('FAB Delete di klik');
+                deleteData()
+            }
+
+            // Kode untuk menghandle ketika tombol save di klik
+            btnSave.onclick = () => {
+                console.log('Tombol FAB di klik.');
+                item.then(team => {
+                    saveTeam(team)
+                })
+            }
+        })
+    </script>
+</body>
+</html>
