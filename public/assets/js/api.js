@@ -102,7 +102,7 @@ const getSavedTeams = () => {
                     <h2 class="header">${team.name}</h2>
                     <div class="card horizontal">
                         <div class="card-image waves-effect waves-block waves-light">
-                            <a href="/detail.html?id=${team.id}&saved=true">
+                            <a href="./detail.html?id=${team.id}&saved=true">
                                 <img src="${team.crestUrl.replace(/^http:\/\//i, 'https://')}" alt="logo-team">
                             </a>
                         </div>
@@ -187,7 +187,7 @@ const renderStandingsData = (result) => {
                     <td>${result.draw}</td>
                     <td>${result.lost}</td>
                     <td>${result.points}</td>
-                    <td><a href="/detail.html?id=${result.team.id}">Lihat Tim</a></td>
+                    <td><a href="./detail.html?id=${result.team.id}">Lihat Tim</a></td>
                 </tr>`;
         });
     });

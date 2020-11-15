@@ -61,7 +61,7 @@ const deleteDataById = id => {
             .then(team => {
                 M.toast({ html: 'Berhasil Di hapus!' })
                 resolve(team)
-                window.history.back();
+                window.history.go(-2);
             })
     })
 }
