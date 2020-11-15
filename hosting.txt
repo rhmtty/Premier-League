@@ -1,0 +1,2 @@
+Firebase Hosting: https://premier-league-f123.firebaseapp.com/
+Github Pages: https://rhmtty.github.io/Premier-League/public/
