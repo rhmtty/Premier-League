@@ -2,7 +2,7 @@ if(!('serviceWorker' in navigator)) {
     console.log('ServiceWorker: Browser tidak di dukung');
 } else {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js')
+        navigator.serviceWorker.register('/sw.js')
         .then(registration => {
             console.log(`Service Worker terdaftar. Scope: ${registration.scope}`);
         })
